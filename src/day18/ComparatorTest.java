@@ -25,7 +25,7 @@ public class ComparatorTest {
                 }
                 throw new RuntimeException("类型异常");
             }
-        };eeeeeeeeee
+        };
         Arrays.sort(arr,comparator);
         for(int i=0;i< arr.length;i++){
             System.out.println(arr[i]);
