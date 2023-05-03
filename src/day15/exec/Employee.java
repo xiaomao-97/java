@@ -11,7 +11,7 @@ public abstract class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "MyDate{" +
                 "name='" + name + '\'' +
                 ", number=" + number +
                 ", birthday=" + birthday.toDateString() +

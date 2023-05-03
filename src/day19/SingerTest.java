@@ -27,7 +27,7 @@ public class SingerTest {
             System.out.println("歌曲有"+entry.getValue());
         }
 
-        List
+
 
     }
 }
