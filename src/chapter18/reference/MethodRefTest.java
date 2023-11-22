@@ -116,12 +116,36 @@ public class MethodRefTest {
             }
         };
         // lambda表达式
-        BiPredicate<String,String>  biPre1 = (s1,s2) ->s1.equals(s2);
+        BiPredicate<String,String>  biPre2 = (s1,s2) ->s1.equals(s2);
 
         // 方法引用
-        BiPredicate<String,String>  biPre1 = String::equals;
+        BiPredicate<String,String>  biPre3 = String::equals;
 
     }
+
+    @Test
+    public void test7(){
+        Emplyee emp = new Emplyee(1001, "马化腾");
+
+        Function<Emplyee,String> fun1 = new Function<Emplyee, String>() {
+            @Override
+            public String apply(Emplyee emplyee) {
+                return emplyee.getName();
+            }
+        };
+        System.out.println(fun1.apply(emp));
+
+        // lambda
+        Function<Emplyee,String> fun2 = emp2 -> emp2.getName();
+        System.out.println(fun1.apply(emp));
+
+        // 方法引用
+        Function<Emplyee,String> fun3 = Emplyee::getName;
+        System.out.println(fun3.apply(emp));
+
+
+    }
+
 
 
 

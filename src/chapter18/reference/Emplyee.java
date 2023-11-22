@@ -4,6 +4,15 @@ public class Emplyee {
     private int id;
     private String name;
 
+
+    public Emplyee(){
+
+    }
+
+    public  Emplyee(int id){
+        this.id = id;
+    }
+
     public Emplyee(int id, String name) {
         this.id = id;
         this.name = name;
