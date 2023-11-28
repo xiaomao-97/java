@@ -1,5 +1,9 @@
 package day21;
 
+import chapter18.reference.Emplyee;
+
+import java.util.Objects;
+
 public class Employee implements Comparable<Employee> {
     private  String name;
     private int age;
@@ -9,6 +13,11 @@ public class Employee implements Comparable<Employee> {
         this.name = name;
         this.age = age;
         this.birthday = birthday;
+    }
+
+    public Employee(String name,int age){
+        this.name = name;
+        this.age =age;
     }
 
     public String getName() {
@@ -48,5 +57,18 @@ public class Employee implements Comparable<Employee> {
     public int compareTo(Employee o) {
         return this.name.compareTo(o.name);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee employee = (Employee) o;
+        return age == employee.age && Objects.equals(name, employee.name) && Objects.equals(birthday, employee.birthday);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, birthday);
     }
 }
