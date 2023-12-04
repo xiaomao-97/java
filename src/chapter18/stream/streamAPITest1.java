@@ -48,7 +48,7 @@ public class streamAPITest1 {
         // 获取员工的姓名长度大于3的员工的姓名
         employees.stream().filter(emp -> emp.getName().length() >2).map(emp -> emp.getName()).forEach(System.out::println);
         System.out.println("********");
-        employees.stream().map(emp -> emp.getName()).filter(emp -> emp.getName().length() >2).forEach(System.out::println);
+//        employees.stream().map(emp -> emp.getName()).filter(emp -> emp.getName().length() >2).forEach(System.out::println);
         System.out.println("********");
         // 相当于方法引用的第三种方法
         employees.stream().filter(emp -> emp.getName().length() >2).map(Employee::getName).forEach(System.out::println);
@@ -61,9 +61,30 @@ public class streamAPITest1 {
 
     @Test
     public void test3(){
+        // 自然排序
+        Integer[] arr = new Integer[]{345, 3, 64, 3, 46, 7, 3, 34, 65, 68};
+        String[] arr1 = new String[]{"GG", "DD", "MM", "SS", "JJ"};
+
+        Arrays.stream(arr).sorted().forEach(System.out::println);
+        System.out.println(Arrays.toString(arr));
+        Arrays.stream(arr1).sorted().forEach(System.out::println);
+
+        // 因为Emplyee没有实现Compareable接口，所以报错
+        List<Employee> employees = EmployeeData.getEmployees();
+        employees.stream().sorted().forEach(System.out::println);
+
+        //定制化排序
+        List<Employee> list = EmployeeData.getEmployees();
+        list.stream().sorted((e1,e2) -> e1.getAge()-e2.getAge()).forEach(System.out::println);
 
 
+        // 针对字符串从大到小排序
+        Arrays.stream(arr1).sorted((s1,s2) -> s1.compareTo(s2)).forEach(System.out::println);
+
+        Arrays.stream(arr1).sorted(String::compareTo).forEach(System.out::println);
     }
+
+
 
 
 
