@@ -3,7 +3,9 @@ package chapter18.stream;
 import day21.Employee;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class stramAPITest2 {
 
@@ -58,6 +60,40 @@ public class stramAPITest2 {
 //        //findFirst返回第一个元素
 //        System.out.println(employees.stream().findFirst().get());
     }
+
+    //归约
+    @Test
+    public void test3(){
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        System.out.println(list.stream().reduce(0,(x1,x2) -> x1+x2));
+        System.out.println(list.stream().reduce(10,(x1,x2) -> x1+x2));
+
+
+        System.out.println(list.stream().reduce(10,(x1,x2) -> Integer.sum(x1,x2)));
+
+        System.out.println(list.stream().reduce(0,Integer::sum));
+
+        List<Employee> employees = EmployeeData.getEmployees();
+        System.out.println(employees.stream().map(employee -> employee.getAge()).reduce((s1, s2) -> Integer.sum(s1, s2)));
+    }
+
+
+    @Test
+    public void test4(){
+        List<Employee> employees = EmployeeData.getEmployees();
+        List<Employee> collect = employees.stream().filter(employee -> employee.getAge() > 256).collect(Collectors.toList());
+        collect.forEach(System.out::println);
+        System.out.println();
+        employees.forEach(System.out::println);
+
+        System.out.println();
+
+        // 按照员工年龄进行排序
+        List<Employee> collect1 = employees.stream().sorted((e1, e2) -> e1.getAge() - e2.getAge()).collect(Collectors.toList());
+        collect1.forEach(System.out::println);
+    }
+
+
 
 
 
