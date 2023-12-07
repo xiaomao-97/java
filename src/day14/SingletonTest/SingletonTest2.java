@@ -1,6 +1,6 @@
 package day14.SingletonTest;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
+//import com.sun.org.apache.xpath.internal.operations.Or;
 
 public class SingletonTest2 {
     public static void main(String[] args) {
